@@ -1,7 +1,7 @@
 import express from 'express'
 import Mensagem from './src/utils/Mensagens.js'
 import db from './src/config/dbConexao.js'
-import HamburguersController from './src/controller/hamburguersController.js'
+import RotasHambuguer from './Routes/hamburguer.Routes.js'
 
 const port = process.env.PORT || 3000
 
@@ -14,18 +14,6 @@ db.once("open", ()=> {
 })
 
 app.get('/', (req,res)=> res.send(new Mensagem(200, 'OK', 'Api Rest com MongoDb feita para o projeto do módulo 5 - Resilia')))
-
-app.get('/hamburguer', (req, res)=>{
-   HamburguersController.listarHamburguers(req, res)
-})
-app.post('/hamburguer', (req, res)=> {
-   HamburguersController.cadastrarHamburguers(req,res)
-})
-app.put('/hamburguer/:id', (req,res)=>{
-   HamburguersController.atualizarHamburguerID(req,res)
-})
-app.delete('/hamburguer/:id', (req,res)=>{
-   HamburguersController.excluirHamburguerID(req,res)
-})
 app.listen(port, ()=> console.log(`Servidor rodando na porta: ${port}`))
 
+RotasHambuguer.rotas(app)
