@@ -1,5 +1,5 @@
-import HamburguersController from "../src/controller/hamburguersController.js"
-
+import HamburguersController from "../controller/hamburguersController.js"
+import PedidosController from '../controller/pedidosController.js'
 class RotasHambuguer {
     static rotas(app) {
         app.get('/hamburguer', (req, res) => {
@@ -27,7 +27,12 @@ class RotasHambuguer {
         app.delete('/hamburguer/:nome', (req,res)=>{
             HamburguersController.excluirHamburguerNome(req, res)
         })
-        
+        app.post('/pedido', (req,res)=>{
+            PedidosController.criarPedido(req,res)
+        })
+        app.get('/pedido', (req, res)=>{
+            PedidosController.listarPedidos(req,res)
+        })
     }
 }
 
