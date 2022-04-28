@@ -2,7 +2,8 @@ import Mensagem from './src/utils/Mensagens.js'
 import express from 'express';
 import db from './src/config/dbConexao.js'
 import RotasHambuguer from './src/Routes/hamburguer.Routes.js'
-
+import RotasPedidos from './src/Routes/pedidos.Routes.js';
+import RotasCliente from './src/Routes/clientes.Routes.js';
 const port = process.env.PORT || 3000
 
 const app = express()
@@ -17,3 +18,5 @@ app.get('/', (req,res)=> res.send(new Mensagem(200, 'OK', 'Api Rest com MongoDb 
 app.listen(port, ()=> console.log(`Servidor rodando na porta: ${port}`))
 
 RotasHambuguer.rotas(app)
+RotasPedidos.rotas(app)
+RotasCliente.rotas(app)

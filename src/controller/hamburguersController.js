@@ -37,7 +37,7 @@ class HamburguersController{
         if(erro){
         res.status(500).send({Mensagem: Response[500], Erro: erro.message})  
         } else {
-            res.status(201).send({Mensagem: Response[201], Resultado: burguer.toJSON()})
+            res.status(201).send({Mensagem: Response[201], Resultado: burguer})
         }
         
     })
@@ -54,7 +54,7 @@ class HamburguersController{
    }
    static atualizarHamburguerNome(req, res){
     const nome = req.body.nome
-    hamburguers.findOneAndUpdate({"nome": `${nome}`}, {$set: req.body}, {new:true}, (erro, burguer, was)=>{
+    hamburguers.findOneAndUpdate({"nome": `${nome}`}, {$set: req.body}, {new:true}, (erro, burguer)=>{
         if(erro){
             res.status(500).send({Mensagem: Response[500], Erro: erro.message})
         }else{

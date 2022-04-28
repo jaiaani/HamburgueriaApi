@@ -27,12 +27,6 @@ class RotasHambuguer {
         app.delete('/hamburguer/:nome', (req,res)=>{
             HamburguersController.excluirHamburguerNome(req, res)
         })
-        app.post('/pedido', (req,res)=>{
-            PedidosController.criarPedido(req,res)
-        })
-        app.get('/pedido', (req, res)=>{
-            PedidosController.listarPedidos(req,res)
-        })
     }
 }
 
