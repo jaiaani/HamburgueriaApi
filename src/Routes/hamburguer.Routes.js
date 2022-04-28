@@ -1,5 +1,4 @@
 import HamburguersController from "../controller/hamburguersController.js"
-import PedidosController from '../controller/pedidosController.js'
 class RotasHambuguer {
     static rotas(app) {
         app.get('/hamburguer', (req, res) => {

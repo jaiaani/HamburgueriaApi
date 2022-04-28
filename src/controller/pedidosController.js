@@ -1,5 +1,5 @@
 import pedidos from '../model/Pedido.js'
-
+import Response from '../utils/Response.js'
 class PedidosController {
     static listarPedidos(req, res) {
         pedidos.find()
@@ -7,7 +7,7 @@ class PedidosController {
             .populate('hamburguer')
             .exec((erro, pedidos) => {
                 if(erro){
-                res.status(200).json(erro)
+                res.status(404).json({Mensagem: Response[404], Erro: erro})
                 }
                 res.status(200).json(pedidos)
             })
@@ -17,9 +17,9 @@ class PedidosController {
         const pedido = new pedidos(req.body)
         pedido.save((erro) => {
             if (erro) {
-                res.send({Erro: erro.message})
+                res.status(400).send({Mensagem: Response[400], Erro: erro})
             } else {
-                res.send(pedido.toJSON())
+                res.status(201).send({Mensagem: Response[201], pedido})
             }
         })
     }
