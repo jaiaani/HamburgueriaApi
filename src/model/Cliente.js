@@ -7,7 +7,8 @@ const clienteSchema = new mongoose.Schema(
         email: {type: String, unique: true, required: true},
         telefone: {type: Number, required: true},
         rua: {type: String, required: true},
-        numero: {type: Number, required: true}
+        numero: {type: Number, required: true},
+        complemento: {type: String, required: true}
     },
     {
         versionKey: false
